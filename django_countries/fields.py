@@ -289,7 +289,8 @@ class CountryField(CharField):
         self.multiple_sort = kwargs.pop("multiple_sort", True)
         if django.VERSION >= (5, 0):
             # Use new lazy callable support
-            kwargs["choices"] = lambda: self.countries
+            # kwargs["choices"] = lambda: self.countries
+            kwargs["choices"] = self.countries
         else:
             kwargs["choices"] = self.countries
         if "max_length" not in kwargs:
